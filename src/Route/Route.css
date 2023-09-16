@@ -1,0 +1,19 @@
+
+.main{
+    width: 100vw;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    box-shadow: 2px 2px 5px grey;
+    
+}
+.child{
+ height: 10vh;
+ width: 30vw;
+ text-decoration: none;
+ color: azure;
+ font-size: 2em;
+ box-sizing: border-box;
+ padding-top: 2%;
+}

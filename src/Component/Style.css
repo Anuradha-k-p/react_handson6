@@ -1,0 +1,68 @@
+
+body{
+    background-color: rgb(226, 211, 240);
+}
+
+.table{
+    color: black;
+}
+.main1{
+    width: 100vw;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    box-shadow: 2px 2px 5px grey;
+    
+}
+.child1{
+ height: 10vh;
+ width: 50vw;
+ text-decoration: none;
+ color: rgb(171, 62, 80);
+
+ 
+}
+
+.child2{
+    height: 10vh;
+ width: 40vw;
+ text-decoration: none;
+ color: rgb(171, 62, 80);
+}
+
+#but{
+    width: 40vw;
+    height: 7vh;
+    margin-top: 3.5%;
+    font-size: 1.2em;
+}
+
+table{
+    width: 90vw;
+    height: 50vh;
+    border: 1px solid grey;
+    box-sizing: border-box;
+    margin-left: 5%;
+}
+
+thead{
+ background-color: rgb(237, 93, 158);
+ height: 7vh;
+}
+tr{
+    border-bottom: 2px solid grey;
+}
+
+input{
+    height: 7vh;
+    width: 35vw;
+    border-radius: 10px;
+    border: 2px solid  rgb(98, 4, 35);
+    box-sizing: border-box;
+    margin: 3.5%;
+
+}
+label{
+    color: rgb(98, 4, 35);
+}
