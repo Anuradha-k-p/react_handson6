@@ -4,52 +4,65 @@ import Store from "../Store/Store";
 import "./Style.css"
 
 
-const EditStudent = () =>{
-    const Navigate = useNavigate();
-    const DataIndex = useLocation().state.index;
+function Editstudent(){
+  const Navigate=useNavigate();
 
-    const ContextData = useContext(Store);
+  const LocationData=useLocation();
 
-const Updatedata = {
-    Name : ContextData.Studata[DataIndex].Name,
-    Age :  ContextData.Studata[DataIndex].Age,
-    Course :  ContextData.Studata[DataIndex].Course,
-    Batch :  ContextData.Studata[DataIndex].Batch
-}
+  const indexData=LocationData.state.index;
+
+  const [StoreData]=useContext(Store)
 
 
 
-    function handleChange(e){
-       Updatedata[e.target.name] = e.target.value;
-    }
 
-    function handleUpdate(){
-        console.log(ContextData.Studata[DataIndex]);
-        ContextData.Studata[DataIndex] = Updatedata;
-        Navigate('/student')
-
-        
-    }
+  const StudentData={
+      Name:StoreData[indexData].Name,
+      Age:StoreData[indexData].Age,
+      Course:StoreData[indexData].Course,
+      Batch:StoreData[indexData].Batch
+  
+  }
+ 
+  
+  const  handleChange=(e)=>{
+      StudentData[e.target.name]=e.target.value
+  
+  }
+  
+   const handleSubmit=()=>{
+  StoreData[indexData]=StudentData;
+     Navigate(-1);
+  }
   return(
     <>
-    <h1>EDIT STUDENT</h1>
-    <label htmlFor="name">Name :  </label>
-    <input type="text" id="name" name="Name" placeholder="enter name" onClick={handleChange}/><br/>
-    <label>Age :  </label>
-    <input type="number" name="Age" placeholder="enter age" onClick={handleChange}/><br/>
-    <label>Course :  </label>
-    <input type="text" name="Course" placeholder="enter course" onClick={handleChange}/><br/>
-    <label>Batch :  </label>
-    <input type="text" name="Batch" placeholder="enter batch" onClick={handleChange}/><br/>
+    
+    <div className="p1">
+        <h1>Edit Student</h1>
+        <div className="c1">
 
-<div className="main1"> 
-     <button className="child2" onClick={handleUpdate}> Upadate Student</button>
-    <button className="child2" onClick={()=> Navigate('/student')}>  Go Back</button>
+        <label  />
+        <input type="text" name="Name" placeholder="Enter your name" onChange={handleChange}/>
+
+        <label />
+        <input type="number" name="Age" placeholder="Enter your age" onChange={handleChange}/>
+
+        </div>
+        <div className="c1">
+        <label />
+        <input type="text"  name="Course" placeholder="Enter your course" onChange={handleChange}/>
+
+        <label />
+        <input type="text" name="Batch" placeholder="Enter your batch" onChange={handleChange}/>
+        </div> 
     </div>
+
+
+       <div id="btns">
+        <button onClick={()=> Navigate("/student")}>Go back</button>
+        <button onClick={handleSubmit}>Update</button>
+        </div>
     </>
   )
-
-
-
-}
-export default EditStudent
+   }
+   export default Editstudent
