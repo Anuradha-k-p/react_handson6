@@ -4,61 +4,65 @@ import Home from "../Component/Home";
 import Student from "../Component/Student";
 import Contact from "../Component/Contact";
 import Store from "../Store/Store";
-import EditStudent from "../Component/EditStudent";
+
 import Addstudent from "../Component/AddStudent";
 import "./Route.css"
+import Editstudent from "../Component/EditStudent";
 
 
 
-const RouteCp = () => {
-    const [data,setData] = useState([
-        {name: "John", age: "25", course: "MERN", batch: "Oct"},
-        {name: "Doe", age: "25", course: "MERN", batch: "Jan"},
-        {name: "Biden", age: "25", course: "MERN", batch: "Nov"},
-        {name: "Barar", age: "25", course: "MERN", batch: "Spt"},
-        {name: "Christ", age: "25", course: "MERN", batch: "Dec"},
-    ])
+function RouteCp(){
+    const[Data,setData]=useState([
 
-    // console.log(data)
-
-    return(
-        <>
-        <BrowserRouter>
-        <div className="main">
-        <NavLink to= '/' className="child">Home</NavLink>
-        <NavLink to= '/student' className="child">Student</NavLink>
-        <NavLink to= '/contact'className="child">Contact</NavLink>
-        </div>
-
-        <Routes>
-             
-             <Route  path='/'  element ={ <Home></Home>}/>
-
-             <Route path='/student'  element ={ <Store.Provider value = {{Studata : data, datafunc : setData}}>
-               <Student></Student>
-             </Store.Provider>}/>
-
-             <Route  path='/contact'  element ={ <Contact></Contact>}/>
-
-             <Route path='/editstudent' element={ <Store.Provider value = {{Studata : data, datafunc : setData}}>
-               <EditStudent></EditStudent>
-             </Store.Provider>
-
-
-             }/>
-             <Route path="/newstudent" element={ 
-             <Store.Provider value = {{Studata : data, datafunc : setData}}>
-            <Addstudent></Addstudent>
-           </Store.Provider>}/>
-
-
-        </Routes>
+        {Name:"Jhon",Age:25,Course:"MERN",Batch:"oct"},
+        {Name:"Doe",Age:25,Course:"MERN",Batch:"Nov"},
+        {Name:"Biden",Age:25,Course:"MERN",Batch:"Dec"},
+        {Name:"Barar",Age:25,Course:"MERN",Batch:"Jan"},
+        {Name:"Christ",Age:25,Course:"MERN",Batch:"Jan"},
         
         
-        </BrowserRouter>
-        
-        </>
-    )
+    ]);
+return(
+    <>
+<BrowserRouter>
+<div className="main">
+<NavLink to="/" className="child">Home</NavLink>
+<NavLink to="/student"  className="child">Student</NavLink>
+<NavLink to="/contact"  className="child">Contact Us</NavLink>
+</div>
 
+
+
+<Routes>
+    <Route path="/" element={<Home/>}></Route>
+    <Route path="/student" element={
+        <Store.Provider value={[Data,setData]}>
+               <Student/>
+        </Store.Provider>
+    }></Route>
+
+    <Route path="/contact" element={<Contact/>}></Route>
+
+    <Route path="/editstudent" element={
+        <Store.Provider value={[Data,setData]}>
+            <Editstudent/>
+         </Store.Provider>
+   }></Route>
+
+<Route path="/addstudent" element={
+    <Store.Provider value={[Data,setData]}>
+    <Addstudent/>
+</Store.Provider>
+}></Route> 
+</Routes>
+
+</BrowserRouter>
+
+
+
+
+
+    </>
+)
 }
- export default RouteCp
+export default RouteCp
