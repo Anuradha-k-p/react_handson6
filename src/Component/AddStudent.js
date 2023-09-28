@@ -1,48 +1,64 @@
-import React, { useContext }  from "react";
+import React, { useContext } from "react";
 import Store from "../Store/Store";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Style.css"
 
 
-function Student(){
-    const Navigate=useNavigate();
 
-    const [ContextData]=useContext(Store);
- 
-    return(
-        <>
-        <h1>Student Details</h1>
-        <button onClick={()=>Navigate('/addstudent')}>Add New Student</button>
-        <table border="2">
-            <thead><tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Course</th>
-                <th>Batch</th>
-                <th>Link</th>
-                </tr></thead>
-            <tbody>
-        {ContextData.map((item,index)=>{
-            return(
-                <tr key={index}>
-                    
-                    <td>{item.Name}</td>
-                   <td>{item.Age}</td>
-                   <td>{item.Course}</td>
-                   <td>{item.Batch}</td>
-                   <td><NavLink to="/editstudent" state={{index}}>Edit</NavLink></td>
-                   
-                </tr>
-            )
-        })}
 
-        </tbody>
-     
+function Addstudent(){
+  const [StoreData]= useContext(Store);
+  const Navi=useNavigate();
+        
+const StudentData={
+    Name:"",
+    Age:"",
+    Course:"",
+    Batch:""
 
-     
-        </table>
-
-        </>
-    )
 }
-export default Student
+console.log(StudentData)
+
+const  handleChange=(e)=>{
+    StudentData[e.target.name]=e.target.value
+
+}
+
+ const handleSubmit=()=>{
+StoreData.push(StudentData)
+ Navi("/student");
+}
+return(
+    <>
+    
+    <div className="p1">
+        <h1>Add Student</h1>
+        <div className="c1">
+
+        <label  />
+        <input type="text" name="Name" placeholder="Enter your name" onChange={handleChange}/>
+
+        <label />
+        <input type="number"  name="Age" placeholder="Enter your age" onChange={handleChange}/>
+
+        </div>
+        <div className="c1">
+        <label  />
+        <input type="text"  name="Course" placeholder="Enter your course" onChange={handleChange}/>
+
+        <label  />
+        <input type="text"  name="Batch" placeholder="Enter your batch" onChange={handleChange}/>
+        </div> 
+    </div>
+
+
+       <div id="btns">
+        <button onClick={()=>Navi("/student")}>Go Back</button>
+        <button onClick={handleSubmit}>Update</button>
+        </div>
+    </>
+)
+
+    
+}
+export default Addstudent
