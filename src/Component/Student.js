@@ -4,45 +4,45 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./Style.css"
 
 
- function Student() {
-   
-const data1 = useContext(Store);
-const Nav = useNavigate();
+function Student(){
+    const Navigate=useNavigate();
 
+    const [ContextData]=useContext(Store);
+ 
     return(
         <>
-        <div className="main1">
-         <h1  className="child1">STUDENT PAGE</h1>
-         <button  className="child1" id="but" onClick={() =>Nav('/newstudent')}>Add New Student</button></div>
-         <table className="table">
-            <thead>
-                <tr>
-                <td>Name</td>
-                <td>Age</td>
-                <td>Course</td>
-                <td>Batch</td>
-                <td>Change</td>
-                </tr>
-            </thead>
+        <h1>Student Details</h1>
+        <button onClick={()=>Navigate('/addstudent')}>Add New Student</button>
+        <table border="2">
+            <thead><tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Batch</th>
+                <th>Link</th>
+                </tr></thead>
             <tbody>
-                {data1.Studata.map((item,index) => {
-                    return(
-                        <tr key={index}>
-                            <td>{item.name}</td>
-                            <td>{item.age}</td>
-                            <td>{item.course}</td>
-                            <td>{item.batch}</td>
-                            <td><NavLink to='/editstudent' state={{index}}>Edit</NavLink></td>
+        {ContextData.map((item,index)=>{
+            return(
+                <tr key={index}>
+                    
+                    <td>{item.Name}</td>
+                   <td>{item.Age}</td>
+                   <td>{item.Course}</td>
+                   <td>{item.Batch}</td>
+                   <td><NavLink to="/editstudent" state={{index}}>Edit</NavLink></td>
+                   
+                </tr>
+            )
+        })}
 
-                        </tr>
-                    )
+        </tbody>
+     
 
-                })}
-            </tbody>
-         </table>
-        
+     
+        </table>
+
         </>
     )
-
- }
- export default Student
+}
+export default Student
