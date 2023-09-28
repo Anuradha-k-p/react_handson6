@@ -31,11 +31,17 @@ body{
  color: rgb(171, 62, 80);
 }
 
-#but{
-    width: 40vw;
+#btns{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+button{
+    width: 30vw;
     height: 7vh;
-    margin-top: 3.5%;
-    font-size: 1.2em;
+    border: 2px solid rgb(63, 54, 56);
+    background-color: rgb(146, 214, 218);
+    border-radius: 10px;
 }
 
 table{
